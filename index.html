@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Servidor Minecraft Anárquico</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="logoanarquico.png" alt="Logo do Servidor" class="logo">
+            <h1 class="server-name">Servidor Minecraft Anárquico</h1>
+        </div>
+    </header>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#">Início</a></li>
+            <li><a href="#discord">Discord</a></li>
+            <li><a href="#rules">Regras</a></li>
+            <li><a href="#ip">IP do Servidor</a></li>
+            <li><a href="#donate">Doar</a></li>
+            <li><a href="#creators">Criadores</a></li>
+            <!-- Novo item para jogadores online -->
+            <li><a href="#players-online">Jogadores Online</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section class="description">
+            <h2>Bem-vindo ao nosso servidor anárquico!</h2>
+            <p>Junte-se a nós para uma experiência de Minecraft sem regras. Aqui, a criatividade é o limite e você é livre para explorar, construir e interagir como quiser.</p>
+        </section>
+        <section id="discord" class="discord">
+            <h2>Discord da Comunidade</h2>
+            <p>Junte-se ao nosso servidor Discord para interagir com outros jogadores, receber atualizações e participar de eventos emocionantes.</p>
+            <a href="https://discord.gg/j68rTrxadP" class="discord-button">
+                <img src="discord-logo-0.png" alt="Botão Discord">
+            </a>
+        </section>
+        <section id="rules" class="server-status">
+            <h2>Regras do Servidor</h2>
+            <p>Aqui estão algumas diretrizes para garantir uma experiência positiva para todos:</p>
+            <ul>
+                <li>Não use linguagem ofensiva.</li>
+                <li>Respeite a propriedade dos outros jogadores.</li>
+                <li>Mantenha a diversão e a criatividade em alta!</li>
+            </ul>
+        </section>
+        <section id="ip" class="server-ip">
+            <h2>IP do Servidor</h2>
+            <p>Conecte-se ao nosso servidor com o endereço IP: <span class="ip-address">seu_endereco_ip</span></p>
+            <button class="copy-ip-button">Copiar IP</button>
+            <section id="donate" class="donate">
+                <h2>Doações</h2>
+                <p>Apoie o servidor com uma doação para manter a experiência incrível para todos.</p>
+                <a href="https://nubank.com.br/pagar/1clqiy/2UNZb1XO6S" class="donate-button">
+                    <img src="image-removebg-preview.png" alt="Botão de Doação">
+                </a>
+            </section>
+            
+    </main>
+    <footer>
+        <p>&copy; 2023 Servidor Minecraft Anárquico</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- ... (código anterior) ... -->
+
+<section id="creators" class="creators">
+    <h2>Criadores do Servidor</h2>
+    <div class="creator-container">
+        <div class="creator">
+            <img src="Rukasu.jfif" alt="Foto de Rukasu" class="creator-photo">
+            <h3>Rukasu</h3>
+            <p>Co-fundador e Criador</p>
+        </div>
+        <div class="creator">
+            <img src="erporoor.jfif" alt="Foto de Erporoor" class="creator-photo">
+            <h3>Erporoor</h3>
+            <p>Co-fundador e Criador</p>
+        </div>
+    </div>
+</section>
+
+<!-- ... (código posterior) ... -->
+<!-- ... (código anterior) ... -->
+
+<!-- Adicione esta seção para exibir o número de jogadores online -->
+<!-- Seção de Jogadores Online -->
+<section id="players-online" class="server-players">
+    <h2>Jogadores Online</h2>
+    <p>Atualmente, há <span class="player-count updating">carregando...</span> jogadores online no servidor.</p>
+</section>
+
+
+<!-- ... (código posterior) ... -->
+
+<script>
+    // Função para atualizar o número de jogadores online
+    function updatePlayerCount() {
+        // URL da API para verificar o status do servidor
+        const serverStatusURL = "https://api.mcsrvstat.us/2/seu_endereco_ip"; // Substitua "seu_endereco_ip" pelo IP do seu servidor Minecraft
+
+        fetch(serverStatusURL)
+            .then(response => response.json())
+            .then(data => {
+                const playerCount = data.players.online;
+                const playerCountElement = document.querySelector('.player-count');
+                playerCountElement.textContent = playerCount;
+            })
+            .catch(error => {
+                console.error("Erro ao obter o status do servidor:", error);
+            });
+    }
+
+    // Chame a função de atualização inicialmente e, em seguida, a cada minuto
+    updatePlayerCount();
+    setInterval(updatePlayerCount, 60000); // Atualize a cada 1 minuto (60000 ms)
+</script>
+
+<!-- ... (código posterior) ... -->
